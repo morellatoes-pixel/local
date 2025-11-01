@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LocalBiz Connect - Connect with Local Business Experts Worldwide</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- LANDING PAGE -->
+    <div id="landing-page" class="page active">
+        <header class="landing-header">
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo">LocalBiz Connect</div>
+                    <nav class="header-nav">
+                        <button class="btn btn--outline btn--sm" onclick="showSignIn()">Sign In</button>
+                        <button class="btn btn--primary btn--sm" onclick="showSignUp()">Sign Up</button>
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+        <section class="hero">
+            <div class="container">
+                <h1 class="hero-title">Connect with Local Business Experts Worldwide</h1>
+                <p class="hero-subtitle">Get trusted advice, accelerate your international expansion</p>
+                <div class="hero-cta">
+                    <button class="btn btn--primary btn--lg" onclick="loginAsClient()">I Need an Expert</button>
+                    <button class="btn btn--outline btn--lg" onclick="loginAsExpert()">Become an Expert</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="benefits">
+            <div class="container">
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">⚡</div>
+                        <h3>Fast Access</h3>
+                        <p>Connect with verified experts in minutes. Get the answers you need when you need them.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">💰</div>
+                        <h3>Transparent Pricing</h3>
+                        <p>Clear hourly rates with no hidden fees. Pay only for the time you use.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">🔒</div>
+                        <h3>Secure Payments</h3>
+                        <p>Protected transactions with money-back guarantee. Your satisfaction is guaranteed.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-logo">LocalBiz Connect</div>
+                    <div class="footer-links">
+                        <a href="#">About</a>
+                        <a href="#">How it Works</a>
+                        <a href="#">Privacy</a>
+                        <a href="#">Terms</a>
+                        <a href="#">Contact</a>
+                    </div>
+                </div>
+                <p class="footer-copyright">© 2025 LocalBiz Connect. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- SEARCH/BROWSE PAGE -->
+    <div id="search-page" class="page">
+        <header class="app-header">
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo">LocalBiz Connect</div>
+                    <div class="header-right">
+                        <div class="user-menu" onclick="toggleUserMenu()">
+                            <div class="user-avatar">JD</div>
+                            <span class="user-name">John Doe</span>
+                            <div class="user-dropdown" id="user-dropdown">
+                                <a href="#" onclick="showDashboard(event)">Dashboard</a>
+                                <a href="#" onclick="showMessages(event)">Messages</a>
+                                <a href="#" onclick="showSettings(event)">Settings</a>
+                                <a href="#" onclick="logout(event)">Logout</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="container">
+            <div class="search-layout">
+                <aside class="search-sidebar">
+                    <div class="sidebar-section">
+                        <h3>Filters</h3>
+                        <div class="filter-group">
+                            <label class="form-label">Location/Country</label>
+                            <select class="form-control" id="filter-location">
+                                <option value="">All Countries</option>
+                                <option value="Germany">Germany</option>
+                                <option value="Italy">Italy</option>
+                                <option value="France">France</option>
+                                <option value="Spain">Spain</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label class="form-label">Expertise Area</label>
+                            <select class="form-control" id="filter-expertise">
+                                <option value="">All Areas</option>
+                                <option value="Legal & Compliance">Legal &amp; Compliance</option>
+                                <option value="Finance & Accounting">Finance &amp; Accounting</option>
+                                <option value="Marketing & Sales">Marketing &amp; Sales</option>
+                                <option value="Operations & Supply Chain">Operations &amp; Supply Chain</option>
+                                <option value="Human Resources">Human Resources</option>
+                                <option value="Digital & Technology">Digital &amp; Technology</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label class="form-label">Language</label>
+                            <select class="form-control" id="filter-language">
+                                <option value="">Any Language</option>
+                                <option value="English">English</option>
+                                <option value="German">German</option>
+                                <option value="Italian">Italian</option>
+                                <option value="French">French</option>
+                                <option value="Spanish">Spanish</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label class="filter-toggle">
+                                <input type="checkbox" id="filter-available">
+                                <span>Available Now</span>
+                            </label>
+                        </div>
+                        <button class="btn btn--primary btn--full-width" onclick="applyFilters()">Apply Filters</button>
+                    </div>
+
+                    <div class="sidebar-section">
+                        <h3>Saved Experts</h3>
+                        <p class="sidebar-empty">No saved experts yet</p>
+                    </div>
+                </aside>
+
+                <main class="search-main">
+                    <div class="search-header">
+                        <h2>Find Your Expert</h2>
+                        <div class="search-bar">
+                            <input type="text" class="form-control" placeholder="Search by name, expertise, or location..." id="search-input">
+                        </div>
+                    </div>
+
+                    <div class="experts-grid" id="experts-grid">
+                        <!-- Expert cards will be dynamically loaded -->
+                    </div>
+                </main>
+            </div>
+        </div>
+    </div>
+
+    <!-- EXPERT PROFILE PAGE -->
+    <div id="profile-page" class="page">
+        <header class="app-header">
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo" onclick="showSearchPage()">LocalBiz Connect</div>
+                    <div class="header-right">
+                        <button class="btn btn--outline btn--sm" onclick="showSearchPage()">← Back to Search</button>
+                        <div class="user-menu" onclick="toggleUserMenu()">
+                            <div class="user-avatar">JD</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="container">
+            <div class="profile-header" id="profile-header">
+                <!-- Profile header content will be loaded here -->
+            </div>
+
+            <div class="profile-content">
+                <div class="profile-main">
+                    <section class="profile-section">
+                        <h3>About</h3>
+                        <div id="profile-bio">
+                            <!-- Bio content will be loaded -->
+                        </div>
+                    </section>
+
+                    <section class="profile-section">
+                        <h3>Expertise Areas</h3>
+                        <div id="profile-expertise">
+                            <!-- Expertise content will be loaded -->
+                        </div>
+                    </section>
+
+                    <section class="profile-section">
+                        <h3>Reviews</h3>
+                        <div id="profile-reviews">
+                            <!-- Reviews will be loaded -->
+                        </div>
+                    </section>
+                </div>
+
+                <aside class="profile-sidebar">
+                    <div class="booking-card">
+                        <div class="booking-rate" id="booking-rate"></div>
+                        <button class="btn btn--primary btn--full-width" onclick="showBooking()">Book a Consultation</button>
+                        <div class="booking-features">
+                            <div class="booking-feature">
+                                <span class="feature-icon">💬</span>
+                                <span>Message</span>
+                            </div>
+                            <div class="booking-feature">
+                                <span class="feature-icon">📞</span>
+                                <span>Call</span>
+                            </div>
+                            <div class="booking-feature">
+                                <span class="feature-icon">🎥</span>
+                                <span>Video</span>
+                            </div>
+                        </div>
+                        <div class="trust-badges">
+                            <div class="trust-badge">🔒 Secure Payment</div>
+                            <div class="trust-badge">✓ Money-back Guarantee</div>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </div>
+
+    <!-- BOOKING PAGE -->
+    <div id="booking-page" class="page">
+        <header class="app-header">
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo" onclick="showSearchPage()">LocalBiz Connect</div>
+                    <div class="header-right">
+                        <button class="btn btn--outline btn--sm" onclick="backToProfile()">← Back</button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="container">
+            <div class="booking-layout">
+                <div class="booking-main">
+                    <h2>Book a Consultation</h2>
+                    <div class="booking-steps">
+                        <div class="step active" data-step="1">
+                            <div class="step-number">1</div>
+                            <div class="step-label">Type</div>
+                        </div>
+                        <div class="step" data-step="2">
+                            <div class="step-number">2</div>
+                            <div class="step-label">Date &amp; Time</div>
+                        </div>
+                        <div class="step" data-step="3">
+                            <div class="step-number">3</div>
+                            <div class="step-label">Details</div>
+                        </div>
+                        <div class="step" data-step="4">
+                            <div class="step-number">4</div>
+                            <div class="step-label">Review</div>
+                        </div>
+                        <div class="step" data-step="5">
+                            <div class="step-number">5</div>
+                            <div class="step-label">Contact</div>
+                        </div>
+                        <div class="step" data-step="6">
+                            <div class="step-number">6</div>
+                            <div class="step-label">Payment</div>
+                        </div>
+                    </div>
+
+                    <div class="booking-step-content" id="booking-step-1">
+                        <h3>Select Consultation Type</h3>
+                        <div class="consultation-types">
+                            <div class="consultation-type" onclick="selectConsultationType('message', 25)">
+                                <div class="type-icon">💬</div>
+                                <div class="type-name">Message</div>
+                                <div class="type-duration">30 minutes</div>
+                                <div class="type-price">€25</div>
+                            </div>
+                            <div class="consultation-type" onclick="selectConsultationType('call', 45)">
+                                <div class="type-icon">📞</div>
+                                <div class="type-name">Call</div>
+                                <div class="type-duration">30 minutes</div>
+                                <div class="type-price">€45</div>
+                            </div>
+                            <div class="consultation-type" onclick="selectConsultationType('video', 85)">
+                                <div class="type-icon">🎥</div>
+                                <div class="type-name">Video Call</div>
+                                <div class="type-duration">60 minutes</div>
+                                <div class="type-price">€85</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="booking-step-content hidden" id="booking-step-2">
+                        <h3>Choose Date and Time</h3>
+                        <div class="date-time-picker">
+                            <div class="form-group">
+                                <label class="form-label">Select Date</label>
+                                <input type="date" class="form-control" id="booking-date" min="2025-10-28">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Select Time</label>
+                                <select class="form-control" id="booking-time">
+                                    <option value="09:00">09:00 AM</option>
+                                    <option value="10:00">10:00 AM</option>
+                                    <option value="11:00">11:00 AM</option>
+                                    <option value="14:00">02:00 PM</option>
+                                    <option value="15:00">03:00 PM</option>
+                                    <option value="16:00">04:00 PM</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="booking-nav">
+                            <button class="btn btn--outline" onclick="previousBookingStep()">← Previous</button>
+                            <button class="btn btn--primary" onclick="nextBookingStep()">Next →</button>
+                        </div>
+                    </div>
+
+                    <div class="booking-step-content hidden" id="booking-step-3">
+                        <h3>Add Description</h3>
+                        <div class="form-group">
+                            <label class="form-label">What would you like to discuss?</label>
+                            <textarea class="form-control" id="booking-description" rows="6" placeholder="Please describe your question or topic in detail..."></textarea>
+                        </div>
+                        <div class="booking-nav">
+                            <button class="btn btn--outline" onclick="previousBookingStep()">← Previous</button>
+                            <button class="btn btn--primary" onclick="nextBookingStep()">Next →</button>
+                        </div>
+                    </div>
+
+                    <div class="booking-step-content hidden" id="booking-step-4">
+                        <h3>Review Booking</h3>
+                        <div class="booking-summary" id="booking-summary">
+                            <!-- Summary will be loaded -->
+                        </div>
+                        <div class="booking-nav">
+                            <button class="btn btn--outline" onclick="previousBookingStep()">← Previous</button>
+                            <button class="btn btn--primary" onclick="nextBookingStep()">Next →</button>
+                        </div>
+                    </div>
+
+                    <div class="booking-step-content hidden" id="booking-step-5">
+                        <h3>Contact Information</h3>
+                        <div class="form-group">
+                            <label class="form-label">Full Name</label>
+                            <input type="text" class="form-control" id="booking-name" placeholder="Your full name">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Email Address</label>
+                            <input type="email" class="form-control" id="booking-email" placeholder="your@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Phone Number</label>
+                            <input type="tel" class="form-control" id="booking-phone" placeholder="+1 (555) 000-0000">
+                        </div>
+                        <div class="booking-nav">
+                            <button class="btn btn--outline" onclick="previousBookingStep()">← Previous</button>
+                            <button class="btn btn--primary" onclick="nextBookingStep()">Next →</button>
+                        </div>
+                    </div>
+
+                    <div class="booking-step-content hidden" id="booking-step-6">
+                        <h3>Payment Confirmation</h3>
+                        <div class="payment-mockup">
+                            <div class="payment-info">
+                                <p>🔒 <strong>Secure Payment</strong> - Your information is protected</p>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Card Number</label>
+                                <input type="text" class="form-control" placeholder="**** **** **** 1234" disabled>
+                            </div>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                                <div class="form-group">
+                                    <label class="form-label">Expiry Date</label>
+                                    <input type="text" class="form-control" placeholder="MM/YY" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">CVV</label>
+                                    <input type="text" class="form-control" placeholder="***" disabled>
+                                </div>
+                            </div>
+                            <div class="payment-total">
+                                <span>Total Amount:</span>
+                                <span id="payment-total">€0</span>
+                            </div>
+                        </div>
+                        <div class="booking-nav">
+                            <button class="btn btn--outline" onclick="previousBookingStep()">← Previous</button>
+                            <button class="btn btn--primary" onclick="confirmBooking()">Complete Booking</button>
+                        </div>
+                    </div>
+                </div>
+
+                <aside class="booking-sidebar">
+                    <div class="booking-summary-card">
+                        <h4>Booking Summary</h4>
+                        <div class="summary-item">
+                            <span>Expert:</span>
+                            <span id="summary-expert">-</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>Type:</span>
+                            <span id="summary-type">-</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>Date:</span>
+                            <span id="summary-date">-</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>Time:</span>
+                            <span id="summary-time">-</span>
+                        </div>
+                        <div class="summary-divider"></div>
+                        <div class="summary-total">
+                            <span>Total:</span>
+                            <span id="summary-total">€0</span>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </div>
+
+    <!-- EXPERT DASHBOARD -->
+    <div id="dashboard-page" class="page">
+        <header class="app-header">
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo" onclick="showSearchPage()">LocalBiz Connect</div>
+                    <div class="header-right">
+                        <div class="user-menu" onclick="toggleUserMenu()">
+                            <div class="user-avatar">MW</div>
+                            <span class="user-name">Marcus Weber</span>
+                            <div class="user-dropdown" id="user-dropdown-dash">
+                                <a href="#" onclick="showProfile(event)">My Profile</a>
+                                <a href="#" onclick="showMessages(event)">Messages</a>
+                                <a href="#" onclick="showSettings(event)">Settings</a>
+                                <a href="#" onclick="logout(event)">Logout</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="container">
+            <h2 class="dashboard-title">Expert Dashboard</h2>
+            
+            <div class="dashboard-stats">
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: var(--color-bg-1);">💰</div>
+                    <div class="stat-content">
+                        <div class="stat-label">Earnings This Month</div>
+                        <div class="stat-value">€2,850</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: var(--color-bg-2);">📅</div>
+                    <div class="stat-content">
+                        <div class="stat-label">Pending Consultations</div>
+                        <div class="stat-value">3</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: var(--color-bg-3);">⭐</div>
+                    <div class="stat-content">
+                        <div class="stat-label">Average Rating</div>
+                        <div class="stat-value">4.9</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: var(--color-bg-4);">✓</div>
+                    <div class="stat-content">
+                        <div class="stat-label">Profile Completion</div>
+                        <div class="stat-value">95%</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-content">
+                <div class="dashboard-main">
+                    <section class="dashboard-section">
+                        <div class="section-header">
+                            <h3>Upcoming Consultations</h3>
+                            <button class="btn btn--outline btn--sm" onclick="addAvailability()">Add Availability</button>
+                        </div>
+                        <div class="consultations-list">
+                            <div class="consultation-item">
+                                <div class="consultation-time">Oct 28, 10:00 AM</div>
+                                <div class="consultation-details">
+                                    <div class="consultation-client">Sarah Johnson</div>
+                                    <div class="consultation-topic">Legal setup for German subsidiary</div>
+                                    <div class="consultation-type">Video Call - 60 min</div>
+                                </div>
+                                <button class="btn btn--primary btn--sm">Join</button>
+                            </div>
+                            <div class="consultation-item">
+                                <div class="consultation-time">Oct 29, 2:00 PM</div>
+                                <div class="consultation-details">
+                                    <div class="consultation-client">Tom Anderson</div>
+                                    <div class="consultation-topic">Tax compliance questions</div>
+                                    <div class="consultation-type">Call - 30 min</div>
+                                </div>
+                                <button class="btn btn--primary btn--sm">Join</button>
+                            </div>
+                            <div class="consultation-item">
+                                <div class="consultation-time">Oct 30, 11:00 AM</div>
+                                <div class="consultation-details">
+                                    <div class="consultation-client">Emma Wilson</div>
+                                    <div class="consultation-topic">Contract review assistance</div>
+                                    <div class="consultation-type">Message - 30 min</div>
+                                </div>
+                                <button class="btn btn--primary btn--sm">View</button>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="dashboard-section">
+                        <h3>Recent Requests</h3>
+                        <div class="requests-list">
+                            <div class="request-item">
+                                <div class="request-client">Michael Brown</div>
+                                <div class="request-topic">Need advice on GDPR compliance for new product</div>
+                                <div class="request-meta">Video Call - Requested 2 hours ago</div>
+                                <div class="request-actions">
+                                    <button class="btn btn--outline btn--sm">Decline</button>
+                                    <button class="btn btn--primary btn--sm">Accept</button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <aside class="dashboard-sidebar">
+                    <div class="profile-card">
+                        <h4>Your Profile</h4>
+                        <div class="profile-completion">
+                            <div class="completion-bar">
+                                <div class="completion-fill" style="width: 95%;"></div>
+                            </div>
+                            <p>95% Complete</p>
+                        </div>
+                        <button class="btn btn--outline btn--full-width">Edit Profile</button>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONFIRMATION PAGE -->
+    <div id="confirmation-page" class="page">
+        <header class="app-header">
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo" onclick="showSearchPage()">LocalBiz Connect</div>
+                    <div class="header-right">
+                        <div class="user-menu" onclick="toggleUserMenu()">
+                            <div class="user-avatar">JD</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="container">
+            <div class="confirmation-container">
+                <div class="confirmation-success">
+                    <div class="success-icon">✓</div>
+                    <h2>Booking Confirmed!</h2>
+                    <p>Your consultation has been successfully booked.</p>
+                </div>
+
+                <div class="confirmation-details">
+                    <h3>Booking Details</h3>
+                    <div class="detail-row">
+                        <span class="detail-label">Confirmation Number:</span>
+                        <span class="detail-value" id="conf-number">LBC-2025-1029</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Expert:</span>
+                        <span class="detail-value" id="conf-expert">-</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Type:</span>
+                        <span class="detail-value" id="conf-type">-</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Date:</span>
+                        <span class="detail-value" id="conf-date">-</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Time:</span>
+                        <span class="detail-value" id="conf-time">-</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Total Paid:</span>
+                        <span class="detail-value" id="conf-total">€0</span>
+                    </div>
+                </div>
+
+                <div class="confirmation-next-steps">
+                    <h3>Next Steps</h3>
+                    <ul>
+                        <li>You'll receive a confirmation email shortly</li>
+                        <li>The expert will prepare for your session</li>
+                        <li>Join the conversation at your scheduled time</li>
+                        <li>Check your messages for any updates</li>
+                    </ul>
+                </div>
+
+                <div class="confirmation-actions">
+                    <button class="btn btn--primary btn--lg" onclick="startConversation()">Start Conversation</button>
+                    <button class="btn btn--outline btn--lg" onclick="showSearchPage()">Browse More Experts</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MESSAGES PAGE -->
+    <div id="messages-page" class="page">
+        <header class="app-header">
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo" onclick="showSearchPage()">LocalBiz Connect</div>
+                    <div class="header-right">
+                        <button class="btn btn--outline btn--sm" onclick="showSearchPage()">← Back</button>
+                        <div class="user-menu" onclick="toggleUserMenu()">
+                            <div class="user-avatar">JD</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="messages-layout">
+            <div class="messages-sidebar">
+                <h3>Messages</h3>
+                <div class="messages-list">
+                    <div class="message-preview active" onclick="selectConversation(0)">
+                        <div class="message-avatar">MW</div>
+                        <div class="message-info">
+                            <div class="message-name">Marcus Weber</div>
+                            <div class="message-last">Thanks for booking! Looking forward to...</div>
+                        </div>
+                        <div class="message-status status--success">Confirmed</div>
+                    </div>
+                    <div class="message-preview" onclick="selectConversation(1)">
+                        <div class="message-avatar">SR</div>
+                        <div class="message-info">
+                            <div class="message-name">Sofia Rossi</div>
+                            <div class="message-last">I can help you with that marketing...</div>
+                        </div>
+                        <div class="message-status">Pending</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="messages-main">
+                <div class="messages-header">
+                    <div class="conversation-info">
+                        <div class="conversation-avatar">MW</div>
+                        <div>
+                            <div class="conversation-name">Marcus Weber</div>
+                            <div class="conversation-status">Legal &amp; Compliance Expert</div>
+                        </div>
+                    </div>
+                    <div class="consultation-badge status--success">Consultation Confirmed</div>
+                </div>
+
+                <div class="messages-thread" id="messages-thread">
+                    <div class="message received">
+                        <div class="message-bubble">
+                            <p>Hello! Thank you for booking a consultation with me. I've reviewed your request about legal setup in Germany.</p>
+                            <div class="message-time">10:30 AM</div>
+                        </div>
+                    </div>
+                    <div class="message received">
+                        <div class="message-bubble">
+                            <p>I'd recommend we focus on three key areas: company formation, tax registration, and initial compliance requirements. Does that align with your needs?</p>
+                            <div class="message-time">10:32 AM</div>
+                        </div>
+                    </div>
+                    <div class="message sent">
+                        <div class="message-bubble">
+                            <p>Yes, that sounds perfect! I'm particularly concerned about the timeline for company formation.</p>
+                            <div class="message-time">10:45 AM</div>
+                        </div>
+                    </div>
+                    <div class="message received">
+                        <div class="message-bubble">
+                            <p>Great! Typically it takes 2-4 weeks. We can discuss the detailed timeline in our video call tomorrow.</p>
+                            <div class="message-time">10:50 AM</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="messages-input">
+                    <input type="text" class="form-control" placeholder="Type your message..." id="message-input">
+                    <button class="btn btn--primary" onclick="sendMessage()">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
